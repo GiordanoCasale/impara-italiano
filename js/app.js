@@ -48,6 +48,13 @@
   const rtl = () => T().dir === 'rtl';
   const arrowBack = () => (rtl() ? '→' : '←');
   const arrowNext = () => (rtl() ? '←' : '→');
+  // Nome predefinito da config.js: testo semplice oppure { fa, en, it }
+  function defaultName() {
+    const n = CFG.nome;
+    if (!n) return '';
+    if (typeof n === 'string') return n;
+    return n[state.lang] || n.en || n.it || n.fa || '';
+  }
   function applyLang() {
     document.documentElement.lang = state.lang;
     document.documentElement.dir = T().dir;
@@ -314,7 +321,7 @@
 
   function home() {
     const t = T();
-    const name = state.name || CFG.nome || '';
+    const name = state.name || defaultName();
     const learned = ALL.filter(isLearned).length;
     const p = phraseOfDay();
     const msg = String(CFG.messaggio || '').trim();
@@ -744,7 +751,7 @@
       </div>
       <div class="card">
         <label class="field">${t.yourName}
-          <input type="text" id="name" dir="auto" value="${esc(state.name || CFG.nome || '')}">
+          <input type="text" id="name" dir="auto" value="${esc(state.name || defaultName())}">
         </label>
         ${voiceSelect}
         <label class="field">${t.voiceRate}

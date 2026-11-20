@@ -1,7 +1,8 @@
 // ✏️ Personalizza qui l'app.
 window.CONFIG = {
   // Nome mostrato nel saluto iniziale (si può cambiare anche dalle impostazioni dell'app).
-  nome: "",
+  // Può essere un semplice testo oppure un nome diverso per ogni lingua dell'interfaccia.
+  nome: { fa: "غزاله", en: "Ghazaleh", it: "Ghazaleh" },
 
   // Un tuo messaggio personale, mostrato nella pagina iniziale. Lascia "" per nasconderlo.
   // Puoi scrivere in persiano, in italiano o in entrambe le lingue.
